@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.4;
+}
+main {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding-top: 8rem;
+}
+h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 4rem;
+}
+.instructions {
+    margin-bottom: 2rem;
+}
+.instructions span {
+    font-weight: 700;
+}
+label {
+    display: block;
+    font-size: 1.4rem;
+}
+input {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #000;
+}
+input[type="submit"] {
+    background-color: #fff;
+    padding: 1rem;
+    color: #000;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+input[type="submit"]:hover, input[type="submit"]:focus {
+    background-color: #000;
+    color: #fff;
+}

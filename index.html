@@ -13,11 +13,12 @@
     <main>
         <section>
             <h1>National Park Search by State</h1>
+            <p class="instructions">Please type the 2-character state code for the state you want to search. <span>For
+                    multiple states, separate each state with a comma. Ex: IL, MO</span></p>
             <form id="searchParks">
-                <label for="searchTerm">Please type the 2-character state code for the state you want searched. For
-                    multiple states, spearate each state with a ",". <span>Ex: IL, MO</span></label>
+                <label for="searchTerm">State(s)</label>
                 <input type="text" name="searchTerm" required />
-                <label>Results:</label>
+                <label>Results</label>
                 <input type="number" name="maxResults" id="js-max-results" value="10" />
                 <input type="submit" for="searchParks" value="Search" />
             </form>
