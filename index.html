@@ -10,6 +10,24 @@
 </head>
 
 <body>
+    <main>
+        <section>
+            <h1>National Park Search by State</h1>
+            <form id="searchParks">
+                <label for="searchTerm">Please type the 2-character state code for the state you want searched. For
+                    multiple states, spearate each state with a ",". <span>Ex: IL, MO</span></label>
+                <input type="text" name="searchTerm" required />
+                <label>Results:</label>
+                <input type="number" name="maxResults" id="js-max-results" value="10" />
+                <input type="submit" for="searchParks" value="Search" />
+            </form>
+        </section>
+        <section class="results">
+            <ul class="js-parks-list">
+
+            </ul>
+        </section>
+    </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
