@@ -1,27 +1,42 @@
 'use strict'
 
-const baseURL = 'https://developer.nps.gov/api/v1/';
+const baseURL = 'https://developer.nps.gov/api/v1/parks';
 const apiKey = 'a4XGjvJiyzsKuEWxfhRO9WtObErCGID9qffSqElG';
-
+function formatUserState(string) {
+    const stateArr = string.toUpperCase().replace(/\s/g, '').split(',');
+    return stateArr;
+}
+function formatParamsString(params) {
+    let paramsString = Object.keys(params)
+        .map(key => `${(key)}=${params[key]}`)
+    return (paramsString.join('&'));
+}
 function getParkData(query, maxResult = 10) {
     const params = {
         stateCode: query,
         limit: maxResult,
-        fields: addresses,
         api_key: apiKey
     };
-
-}
-function formatUserState(string) {
-    const stateArr = string.toUpperCase().replace(/\s/g, '').split(',');
-    return stateArr;
+    let newParamsString = formatParamsString(params);
+    let url = baseURL + '?' + newParamsString;
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJSON => console.log(responseJSON))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        });
 }
 function watchForm() {
     $('#searchParks').submit(event => {
         event.preventDefault();
         const userState = formatUserState($('#js-search-term').val());
         const userMax = $('#js-max-results').val();
-        console.log('watchForm is working');
+        getParkData(userState, userMax);
     });
 }
 
