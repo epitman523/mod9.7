@@ -11,10 +11,28 @@ function formatParamsString(params) {
         .map(key => `${(key)}=${params[key]}`)
     return (paramsString.join('&'));
 }
-function getParkData(query, maxResult = 10) {
+function displayParkData(responseJSON) {
+    $('.js-parks-list').empty();
+    if (responseJSON.data.length === 0) {
+        $('.js-parks-list').append('<li><p>Your search terms did not return any matches</p></li>');
+    }
+    for (let i = 0; i < responseJSON.data.length; i++) {
+        $('.js-parks-list').append(
+            `<li>
+                <p class="full-name">${responseJSON.data[i].fullName}</p>
+                <p class="description">${responseJSON.data[i].description}</p>
+                <p class="url"><a href="${responseJSON.data[i].url}" target="_blank">${responseJSON.data[i].url}</a></p>
+                <p>Address:<br> ${responseJSON.data[i].addresses[0].line1}<br> ${responseJSON.data[i].addresses[0].line2} ${responseJSON.data[i].addresses[0].line3} ${responseJSON.data[i].addresses[0].city}, ${responseJSON.data[i].addresses[0].stateCode} ${responseJSON.data[i].addresses[0].postalCode}
+                </p>
+            </li>`
+        );
+    }
+}
+function getParkData(query, maxResult) {
     const params = {
         stateCode: query,
         limit: maxResult,
+        fields: ['addresses'],
         api_key: apiKey
     };
     let newParamsString = formatParamsString(params);
@@ -26,7 +44,8 @@ function getParkData(query, maxResult = 10) {
             }
             throw new Error(response.statusText);
         })
-        .then(responseJSON => console.log(responseJSON))
+        .then(responseJSON => displayParkData(responseJSON))
+        //.then(responseJSON => console.log(responseJSON))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
         });

@@ -60,3 +60,18 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     background-color: #000;
     color: #fff;
 }
+ul {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 2rem;
+    padding-bottm: 2rem;
+    border-bottom: 1px solid #ccc;
+}
+li p {
+    margin-bottom: 1rem;
+}
+li p.full-name {
+    font-size: 2rem;
+    font-weight: 700;
+}
