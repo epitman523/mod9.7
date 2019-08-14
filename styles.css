@@ -28,6 +28,11 @@ h1 {
 .instructions span {
     font-weight: 700;
 }
+form {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
 label {
     display: block;
     font-size: 1.4rem;
@@ -37,6 +42,12 @@ input {
     margin-bottom: 2rem;
     padding: 0.5rem 1rem;
     border: 1px solid #000;
+}
+.state {
+    width: 65%;
+}
+.max-result {
+    width: 30%;
 }
 input[type="submit"] {
     background-color: #fff;

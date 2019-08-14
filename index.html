@@ -16,10 +16,15 @@
             <p class="instructions">Please type the 2-character state code for the state you want to search. <span>For
                     multiple states, separate each state with a comma. Ex: IL, MO</span></p>
             <form id="searchParks">
-                <label for="searchTerm">State(s)</label>
-                <input type="text" name="searchTerm" id="js-search-term" required />
-                <label>Results</label>
-                <input type="number" name="maxResults" id="js-max-results" min="1" max="50" />
+                <div class="state">
+                    <label for="searchTerm">State(s)</label>
+                    <input type="text" name="searchTerm" id="js-search-term" required />
+                </div>
+                <div class="max-result">
+                    <label>Results</label>
+                    <input type="number" name="maxResults" id="js-max-results" min="1" max="50" />
+                </div>
+
                 <input type="submit" for="searchParks" value="Search" />
             </form>
         </section>
